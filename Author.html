@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Entry</title>
+</head>
+<body>
+   
+
+<h1>Author Entry- Sumedh</h1>
+
+<form>
+    <label for="secretvalue">The hidden author name</label>
+    <input type="password" value="Dickens" name="secretvalue" id="secretvalue">
+    <br><br>
+    <label for="input">Guess the author</label>
+    <input type="text" id="input">
+    <br><br>
+    <button type="button" onclick="checkAuthor()">check the Guess</button>
+    <br><br>
+    <p>Good:<span id="goodCount">0</span></p>
+    <p>oops:<span id="oppsCount">0</span></p>
+
+</form>
+<script>
+    var good=0;
+    var oops=0;
+    function checkAuthor(){
+        var original=document.getElementById("secretvalue").value
+        var guess=document.getElementById("input").value
+        if(original==guess){
+            good++;
+            alert("you got it right");
+        }else{
+            oops++;
+            alert("sorry");
+        }
+        document.getElementById("goodCount").innerHTML=good;
+        document.getElementById("oppsCount").innerHTML=oops;
+    }
+</script>
+
+</body>
+</html>
