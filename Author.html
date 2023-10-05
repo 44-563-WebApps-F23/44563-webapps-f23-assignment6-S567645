@@ -1,108 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Author Entry</title>
-</head>
-<body>
-   
-
-<h1>Author Entry- Sumedh</h1>
-
-<form>
-    <label for="secretvalue">The hidden author name</label>
-    <input type="password" value="Dickens" name="secretvalue" id="secretvalue">
-    <br><br>
-    <label for="input">Guess the author</label>
-    <input type="text" id="input">
-    <br><br>
-    <button type="button" onclick="checkAuthor()">check the Guess</button>
-    <br><br>
-    <p>Good:<span id="goodCount">0</span></p>
-    <p>oops:<span id="oppsCount">0</span></p>
-
-</form>
-<script>
-    var good=0;
-    var oops=0;
-    function checkAuthor()
-    {
-        var original=document.getElementById("secretvalue").value
-        var guess=document.getElementById("input").value
-        if(original==guess)
-        {
-            good++;
-            alert("you got it right");
-        }else
-        {
-            oops++;
-            if(oops>7)
-            {
-                document.getElementById("guess").disabled=true;
-                alert("Sorry.ran out of guesses");
-            }
-            alert("sorry");
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .result-container {
+            margin-top: 20px;
         }
-        document.getElementById("goodCount").innerHTML=good;
-        document.getElementById("oppsCount").innerHTML=oops;
-        document.getElementById("")
-    }
-</script>
 
-<div class="container">
+        .incorrect-guesses {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
 
-    <img src="pune.jpg" class="img-fluid" alt="pune" id="1st image"
+<body>
+    <div class="container mt-4">
+        <h1 class="display-4">Author Entry - Sumedh</h1>
+        <h2>Getting input</h2>
 
-    width="100" height="100"/>
+        <form>
+            <div class="form-group">
+                <label for="Hidden">The Hidden author name</label>
+                <input type="password" id="Hidden" name="Hidden" min="10" max="50" step="2" value="Dickens" class="form-control">
+            </div>
 
-    <button type="button" onclick="selectImage()">Check the Image</button>
+            <div class="form-group">
+                <label for="Guess">Guess the author</label>
+                <input type="text" id="Guess" class="form-control">
+            </div>
 
-</div>
+            <button type="button" id="checkButton" onclick="checkauthor()" class="btn btn-primary">Check the Guess</button>
+        </form>
 
-<script>
+        <div class="result-container">
+            <p>Result:</p>
+            <div id="result">Good: 0, Oops: 0</div>
+        </div>
 
-   
+        <div class="result-container">
+            <p>Incorrect Guesses:</p>
+            <div id="incorrectGuesses" class="incorrect-guesses"></div>
+        </div>
 
-    let useImage = 1;
+        <img src="atlanta.jpg" alt="Agra" id="imageChange" width="100px" height="100px" onclick="selectImage()">
 
-    function selectImage()
+    </div>
 
-    {
+    <script>
+        var good = 0;
+        var oops = 0;
+        var useImage = 1;
+        var incorrectCounter = 0;
 
-     
+        function checkauthor() {
+            var hiddenInput = document.getElementById("Hidden");
+            var guessInput = document.getElementById("Guess");
+            var result = document.getElementById("result");
+            var incorrectGuessesDiv = document.getElementById("incorrectGuesses");
 
-    switch (useImage) {
+            var hiddenauthor = hiddenInput.value;
+            var guessauthor = guessInput.value;
 
-    case 1:
+            if (hiddenauthor === guessauthor) {
+                alert("You got it right");
+                good++;
+            } else {
+                oops++;
+                incorrectCounter++;
 
-    document.getElementById("1st image").src = "atlanta.jpg" ;
+                if (incorrectCounter === 7) {
+                    document.getElementById("checkButton").onclick = function() {
+                        alert("Sorry, ran out of guesses.");
+                    };
+                }
 
-     useImage = 2;
+                incorrectGuessesDiv.innerHTML += guessauthor + ", ";
 
-      break;
+                alert("Sorry");
+            }
 
-    case 2:
+            result.innerHTML = "Good: " + good + ", Oops: " + oops;
+        }
 
-    document.getElementById("1st image").src = "pittsburg.jpg" ;
-
-     useImage=3;
-
-      break;
-
-    case 3:
-
-    document.getElementById("1st image").src = "pune.jpg" ;
-
-    useImage=1;
-
-      break;
-
-    }
-
-}
-
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById("imageChange").src = "atlanta.jpg";
+                    useImage++;
+                    break;
+                case 2:
+                    document.getElementById("imageChange").src = "pittsburg.jpg";
+                    useImage++;
+                    break;
+                case 3:
+                    document.getElementById("imageChange").src = "pune.jpg";
+                    useImage = 1;
+                    break;
+            }
+        }
     </script>
-
 </body>
+
 </html>
