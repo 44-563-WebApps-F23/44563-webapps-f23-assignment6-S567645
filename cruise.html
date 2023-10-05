@@ -44,14 +44,16 @@
     </form>
     <script>
         let my_cruise = {};
-        function selectCruise() {
+        function selectCruise()
+         {
             my_cruise = {};
             my_cruise.shared = document.getElementById('checkbox1').checked;
             my_cruise.breakfast = document.getElementById('checkbox2').checked;
             my_cruise.pool = document.getElementById('checkbox3').checked;
             document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
         }
-        function updateCruise() {
+        function updateCruise()
+        {
             let days = document.getElementById('daysInput').value;
 
             let price = document.getElementById('priceInput').value;

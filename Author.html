@@ -26,20 +26,50 @@
 <script>
     var good=0;
     var oops=0;
-    function checkAuthor(){
+    function checkAuthor()
+    {
         var original=document.getElementById("secretvalue").value
         var guess=document.getElementById("input").value
-        if(original==guess){
+        if(original==guess)
+        {
             good++;
             alert("you got it right");
-        }else{
+        }else
+        {
             oops++;
+            if(oops>7)
+            {
+                document.getElementById("guess").disabled=true;
+                alert("Sorry.ran out of guesses");
+            }
             alert("sorry");
         }
         document.getElementById("goodCount").innerHTML=good;
         document.getElementById("oppsCount").innerHTML=oops;
+        document.getElementById("")
     }
 </script>
+
+colour.css 
+img {
+    cursor:pointer
+}
+
+img:hover {
+    border:4px solid aquamarine
+}
+button {
+    cursor:pointer
+}
+
+button:hover {
+    background-color:lightcoral;
+}
+
+label:hover {
+    color:blue;
+    font-style:bold;
+}
 
 <div class="container">
 

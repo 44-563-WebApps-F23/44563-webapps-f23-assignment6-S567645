@@ -33,7 +33,8 @@
             let toShow = "";
 
  
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 5; i++)
+            {
 
                 const calculatedTip = ba * (tip + i * 4) / 100;
 
@@ -74,14 +75,16 @@
  
 
 <script>
-    function chooseOp() {
+    function chooseOp()
+     {
         const ba = parseFloat(document.getElementById('baseInput').value);
 
         const tip = parseFloat(document.getElementById('tipInput').value);
         const so = document.querySelector('input[name="operation"]:checked').value;
 
         let result;
-        switch (so) {
+        switch (so) 
+        {
             case 'sum':
 
                 result = ba + tip;
