@@ -23,12 +23,12 @@
 
         <form>
             <div class="form-group">
-                <label for="Hidden">The Hidden author name</label>
+                <label for="Hidden">The author hidden name</label>
                 <input type="password" id="Hidden" name="Hidden" min="10" max="50" step="2" value="Dickens" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="Guess">Guess the author</label>
+                <label for="Guess">Guess the author name</label>
                 <input type="text" id="Guess" class="form-control">
             </div>
 
@@ -55,7 +55,8 @@
         var useImage = 1;
         var incorrectCounter = 0;
 
-        function checkauthor() {
+        function checkauthor() 
+        {
             var hiddenInput = document.getElementById("Hidden");
             var guessInput = document.getElementById("Guess");
             var result = document.getElementById("result");
@@ -64,15 +65,20 @@
             var hiddenauthor = hiddenInput.value;
             var guessauthor = guessInput.value;
 
-            if (hiddenauthor === guessauthor) {
+            if (hiddenauthor === guessauthor)
+             {
                 alert("You got it right");
                 good++;
-            } else {
+            } else
+             {
                 oops++;
                 incorrectCounter++;
 
-                if (incorrectCounter === 7) {
-                    document.getElementById("checkButton").onclick = function() {
+                if (incorrectCounter === 7)
+                 {
+                    document.getElementById("checkButton").onclick = function() 
+                    
+                    {
                         alert("Sorry, ran out of guesses.");
                     };
                 }
@@ -85,8 +91,10 @@
             result.innerHTML = "Good: " + good + ", Oops: " + oops;
         }
 
-        function selectImage() {
-            switch (useImage) {
+        function selectImage()
+         {
+            switch (useImage) 
+            {
                 case 1:
                     document.getElementById("imageChange").src = "atlanta.jpg";
                     useImage++;
